@@ -11,6 +11,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 const handleEvent = (type, data) => {
+  console.log('event', type, data);
   if (type === 'PostCreated') {
     const { id, title } = data;
     posts[id] = { id, title, comments: [] };
@@ -30,6 +31,7 @@ const handleEvent = (type, data) => {
 }
 
 app.get('/posts', (req, res) => {
+  console.log('get posts', posts);
   res.send(posts);
 });
 app.post('/events', (req, res) => {

@@ -13,6 +13,8 @@ app.post('/events', (req, res) => {
 
   events.push(message);
 
+  console.log('event', message);
+
   axios.post('http://posts-clusterip-srv:4000/events', message).catch(console.log);
   axios.post('http://comments-srv:4001/events', message).catch(console.log);
   axios.post('http://query-srv:4002/events', message).catch(console.log);
